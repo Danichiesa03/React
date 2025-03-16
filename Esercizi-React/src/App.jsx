@@ -1,16 +1,13 @@
+import React from "react";
 import "./App.css";
-import AlertClick from "./components/AlertClick";
+import Counter from "./components/Counter";
+import Clock from "./components/Clock";
 
-function App() {
-  function HandleButtonClick() {
-    const now = new Date();
-    alert(`L'ora attuale è: ${now.toLocaleDateString()}`);
-  }
+export default function App() {
   return (
-    <>
-      <AlertClick onClick={HandleButtonClick}></AlertClick>
-    </>
+    <div>
+      <Counter initialValue={0} increment={1} />
+      <Clock />
+    </div>
   );
 }
-
-export default App;
