@@ -1,10 +1,14 @@
-import { useState } from "react";
 import "./App.css";
+import Welcome from "./components/Welcome";
+import Age from "./components/Age";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <></>;
+  return (
+    <>
+      <Welcome />
+      <Age />
+    </>
+  );
 }
 
 export default App;
