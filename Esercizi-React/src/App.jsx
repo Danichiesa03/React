@@ -1,8 +1,13 @@
 import { useState } from "react";
 import "./App.css";
+import GithubUsers from "./components/GithubUsers";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <GithubUsers />
+    </>
+  );
 }
 
 export default App;
