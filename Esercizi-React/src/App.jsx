@@ -1,8 +1,12 @@
-import { useState } from "react";
 import "./App.css";
+import FocusableInput from "./components/FocusableInput";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <FocusableInput></FocusableInput>
+    </>
+  );
 }
 
 export default App;
