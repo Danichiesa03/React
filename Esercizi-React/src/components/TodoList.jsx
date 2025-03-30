@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 const TodoList = () => {
-  const [todos, setTodos] = useState(["Task 1", "Task 2", "Task 3"]);
-  const [inputValue, setInputValue] = useState("");
+  const [todos, setTodos] = useState([]);
 
-  const addTodo = () => {
-    if (inputValue.trim() === "") return;
-    setTodos([...todos, inputValue]);
-    setInputValue("");
+  const addTodo = (event) => {
+    event.preventDefault();
+    const value = event.target.elements.todo.value;
+    setTodos((todos) => [...todos, value]);
+    event.target.elements.todo.value = "";
   };
 
   const resetTodos = () => {
@@ -15,19 +15,15 @@ const TodoList = () => {
   };
 
   const removeTodo = (index) => {
-    setTodos(todos.filter((_, i) => i !== index));
+    setTodos((todos) => todos.filter((x, i) => i !== index));
   };
 
   return (
     <div>
-      <h2>Todo List</h2>
-      <input
-        type="text"
-        value={inputValue}
-        onChange={(event) => setInputValue(event.target.value)}
-        placeholder="Add a new task"
-      />
-      <button onClick={addTodo}>Add</button>
+      <form onSubmit={addTodo}>
+        <input type="text" name="todo" />
+        <button type="submit">Add</button>
+      </form>
       <button onClick={resetTodos}>Reset</button>
       <ul>
         {todos.map((todo, index) => (
