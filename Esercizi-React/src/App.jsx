@@ -1,11 +1,12 @@
-import React from "react";
 import "./App.css";
-import UncontrolledLogin from "./components/login";
+import UncontrolledLogin from "./components/UncontrolledLogin";
 
-export default function App() {
+function App() {
   return (
-    <div>
-      <UncontrolledLogin />
-    </div>
+    <>
+      <UncontrolledLogin></UncontrolledLogin>
+    </>
   );
 }
+
+export default App;
