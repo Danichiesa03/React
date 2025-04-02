@@ -1,29 +1,29 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, Outlet } from "react-router-dom";
 
 export default function GithubUserList() {
-  const [data, setData] = useState([]);
+  const [usernames, setUsernames] = useState([]);
 
-  useEffect(() => {
-    fetch(`https://api.github.com/users`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setData(data);
-      });
-  }, []);
+  function handleAddUsername(event) {
+    event.preventDefault();
+    const username = event.target.elements.username.value;
+    setUsernames((usernames) => [...usernames, username]);
+  }
 
   return (
     <div>
-      <h2>Lista: </h2>
+      <form onSubmit={handleAddUsername}>
+        <input type="input" name="username" />
+        <button>Aggiungi</button>
+      </form>
       <ul>
-        {data.map((user) => (
-          <li key={user.id}>
-            <Link to={`/users/${user.login}`}>{user.login}</Link>
+        {usernames.map((username) => (
+          <li key={username}>
+            <Link to={`/users/${username}`}>{username}</Link>
           </li>
         ))}
       </ul>
+      <Outlet />
     </div>
   );
 }

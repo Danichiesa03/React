@@ -4,14 +4,18 @@ export default function GithubUser({ username }) {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch(`https://api.github.com/users/${username}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((json) => {
-        console.log(json);
-        setData(json);
-      });
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch(
+          `https://api.github.com/users/${username}`
+        );
+        const datas = await response.json();
+        setData(datas);
+      } catch (error) {
+        console.error("errore");
+      }
+    };
+    fetchUserData();
   }, [username]);
 
   return (
