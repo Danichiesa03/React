@@ -13,7 +13,7 @@ export default function GithubUserList() {
   return (
     <div>
       <form onSubmit={handleAddUsername}>
-        <input type="input" name="username" />
+        <input type="text" name="username" />
         <button>Aggiungi</button>
       </form>
       <ul>
@@ -23,7 +23,6 @@ export default function GithubUserList() {
           </li>
         ))}
       </ul>
-      <Outlet />
     </div>
   );
 }
