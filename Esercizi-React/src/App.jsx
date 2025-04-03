@@ -23,7 +23,7 @@ function App() {
               element={<Counter initialValue={0} incrementAmount={1} />}
             />
             <Route path="/users" element={<GithubUserList />} />
-            <Route path=":username" element={<ShowGithubUser />} />
+            <Route path="/:username" element={<ShowGithubUser />} />
             <Route index element={<div> Aggiungi utente e selezionalo</div>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
